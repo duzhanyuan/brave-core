@@ -1,0 +1,14 @@
+diff --git a/content/browser/web_contents/web_contents_impl.cc b/content/browser/web_contents/web_contents_impl.cc
+index 26384f823b511ca720ae474e950d75fd19b65111..7b81b7dc74fe47688f7712bf9ea7f01412ba5e39 100644
+--- a/content/browser/web_contents/web_contents_impl.cc
++++ b/content/browser/web_contents/web_contents_impl.cc
+@@ -4523,6 +4523,9 @@ void WebContentsImpl::OnRegisterProtocolHandler(RenderFrameHostImpl* source,
+                                                 const GURL& url,
+                                                 const base::string16& title,
+                                                 bool user_gesture) {
++  LOG(ERROR) << "protocol: " << protocol;
++  LOG(ERROR) << "url: " << url.spec();
++  LOG(ERROR) << "title: " << title;
+   // TODO(nick): Should we consider |source| here or pass it to the delegate?
+   // TODO(nick): Do we need to apply FilterURL to |url|?
+   if (!delegate_)

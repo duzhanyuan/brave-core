@@ -1,0 +1,14 @@
+diff --git a/third_party/blink/renderer/modules/navigatorcontentutils/navigator_content_utils.cc b/third_party/blink/renderer/modules/navigatorcontentutils/navigator_content_utils.cc
+index 587fae6bbbcf83ebe3463465ae016760378e61b2..c14113484eca6333101386cd85b925ddde55bc75 100644
+--- a/third_party/blink/renderer/modules/navigatorcontentutils/navigator_content_utils.cc
++++ b/third_party/blink/renderer/modules/navigatorcontentutils/navigator_content_utils.cc
+@@ -75,6 +75,9 @@ static bool VerifyCustomHandlerURL(const Document& document,
+     return false;
+   }
+ 
++  LOG(ERROR) << "new_url = " << new_url;
++  LOG(ERROR) << "kurl = " << kurl.Protocol() << kurl.Host();
++  LOG(ERROR) << "document.GetSecurityOrigin()" << document.GetSecurityOrigin()->ToString();
+   // The specification says that the API throws SecurityError exception if the
+   // URL's origin differs from the document's origin.
+   if (!document.GetSecurityOrigin()->CanRequest(kurl)) {
