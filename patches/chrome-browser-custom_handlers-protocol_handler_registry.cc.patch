@@ -1,0 +1,16 @@
+diff --git a/chrome/browser/custom_handlers/protocol_handler_registry.cc b/chrome/browser/custom_handlers/protocol_handler_registry.cc
+index 571e5ae459d6c1a55a35a69bf5afc8799fcec33b..ccdba93a0ac420788d424acd9b8df6da3f16b3a5 100644
+--- a/chrome/browser/custom_handlers/protocol_handler_registry.cc
++++ b/chrome/browser/custom_handlers/protocol_handler_registry.cc
+@@ -393,6 +393,11 @@ void ProtocolHandlerRegistry::InstallDefaultsForChromeOS() {
+ void ProtocolHandlerRegistry::InitProtocolSettings() {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+ 
++  AddPredefinedHandler(
++      ProtocolHandler::CreateProtocolHandler(
++        "magnet",
++        GURL("chrome-extension://lgjmpdmojkpocjcopdikifhejkkjglho/brave_webtorrent.html?magnet:?%s")));
++
+   // Any further default additions to the table will get rejected from now on.
+   is_loaded_ = true;
+   is_loading_ = true;
